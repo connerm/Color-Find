@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, PhotoIntentActivity!</string>
+    <string name="app_name">ColorFind</string>
+    <string name="frontText">Color Find</string>
+    <string name="colorText">Find colors</string>
+    <string name="btnIntendS">Take Photo</string>
+    <string name="howToBtn">How To Play</string>
+    <string name="nextBtn">Next Color</string>
+    <string name="cannot">Cannot</string>
+</resources>

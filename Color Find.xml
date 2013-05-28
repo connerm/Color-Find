@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="photointentactivity" default="all">
+  
+  
+  <property file="Color Find.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="128m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/.pyc/**"/>
+    <exclude name="**/.pyo/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/*.lib/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/*.rbc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.zip"/>
+    <include name="*.apk"/>
+    <include name="*.war"/>
+    <include name="*.egg"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.swc"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.android_4.2.2" value="${jdk.home.android_4.2.2}/../../../../../../usr/lib/jvm/java-7-openjdk-i386/bin"/>
+  <path id="jdk.classpath.android_4.2.2">
+    <fileset dir="${jdk.home.android_4.2.2}">
+      <include name="platforms/android-17/android.jar"/>
+      <include name="platforms/android-17/data/res"/>
+      <include name="tools/support/annotations.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm4-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module PhotoIntentActivity -->
+  
+  <dirname property="module.photointentactivity.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.photointentactivity" value="${jdk.home.android_4.2.2}"/>
+  <property name="module.jdk.bin.photointentactivity" value="${jdk.bin.android_4.2.2}"/>
+  <property name="module.jdk.classpath.photointentactivity" value="jdk.classpath.android_4.2.2"/>
+  
+  <property name="compiler.args.photointentactivity" value="${compiler.args}"/>
+  
+  <property name="photointentactivity.output.dir" value="${module.photointentactivity.basedir}/out/production/PhotoIntentActivity"/>
+  <property name="photointentactivity.testoutput.dir" value="${module.photointentactivity.basedir}/out/test/PhotoIntentActivity"/>
+  
+  <path id="photointentactivity.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="photointentactivity.module.production.classpath">
+    <path refid="${module.jdk.classpath.photointentactivity}"/>
+  </path>
+  
+  <path id="photointentactivity.runtime.production.module.classpath">
+    <pathelement location="${photointentactivity.output.dir}"/>
+  </path>
+  
+  <path id="photointentactivity.module.classpath">
+    <path refid="${module.jdk.classpath.photointentactivity}"/>
+    <pathelement location="${photointentactivity.output.dir}"/>
+  </path>
+  
+  <path id="photointentactivity.runtime.module.classpath">
+    <pathelement location="${photointentactivity.testoutput.dir}"/>
+    <pathelement location="${photointentactivity.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.photointentactivity">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.photointentactivity">
+    <patternset refid="excluded.from.module.photointentactivity"/>
+  </patternset>
+  
+  <path id="photointentactivity.module.sourcepath">
+    <dirset dir="${module.photointentactivity.basedir}">
+      <include name="src"/>
+      <include name="gen"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.photointentactivity" depends="compile.module.photointentactivity.production,compile.module.photointentactivity.tests" description="Compile module PhotoIntentActivity"/>
+  
+  <target name="compile.module.photointentactivity.production" depends="register.custom.compilers" description="Compile module PhotoIntentActivity; production classes">
+    <mkdir dir="${photointentactivity.output.dir}"/>
+    <javac2 destdir="${photointentactivity.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.photointentactivity}/javac">
+      <compilerarg line="${compiler.args.photointentactivity}"/>
+      <bootclasspath refid="photointentactivity.module.bootclasspath"/>
+      <classpath refid="photointentactivity.module.production.classpath"/>
+      <src refid="photointentactivity.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.photointentactivity"/>
+    </javac2>
+    
+    <copy todir="${photointentactivity.output.dir}">
+      <fileset dir="${module.photointentactivity.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.photointentactivity.basedir}/gen">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.photointentactivity.tests" depends="register.custom.compilers,compile.module.photointentactivity.production" description="compile module PhotoIntentActivity; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.photointentactivity" description="cleanup module">
+    <delete dir="${photointentactivity.output.dir}"/>
+    <delete dir="${photointentactivity.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.photointentactivity" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.photointentactivity" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.photointentactivity" value="${basedir}/out/artifacts/PhotoIntentActivity"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.PhotoIntentActivity.apk" value="${artifacts.temp.dir}/PhotoIntentActivity.apk"/>
+  </target>
+  
+  <target name="artifact.photointentactivity" depends="init.artifacts, compile.module.photointentactivity" description="Build &#39;PhotoIntentActivity&#39; artifact">
+    <property name="artifact.temp.output.photointentactivity" value="${artifacts.temp.dir}/PhotoIntentActivity"/>
+    <mkdir dir="${artifact.temp.output.photointentactivity}"/>
+    <zip destfile="${temp.jar.path.PhotoIntentActivity.apk}">
+      <zipfileset src="/home/conner/Documents/java/AndroidStudioProjects/PhotoIntentActivity/out/production/PhotoIntentActivity/PhotoIntentActivity.afp.apk!/"/>
+    </zip>
+    <copy file="${temp.jar.path.PhotoIntentActivity.apk}" tofile="${artifact.temp.output.photointentactivity}/PhotoIntentActivity.apk"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.photointentactivity" description="Build all artifacts">
+    <mkdir dir="${artifact.output.photointentactivity}"/>
+    <copy todir="${artifact.output.photointentactivity}">
+      <fileset dir="${artifact.temp.output.photointentactivity}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
